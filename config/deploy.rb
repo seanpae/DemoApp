@@ -3,7 +3,7 @@ lock '3.3.5'
 
 set :application, 'DemoApp'
 set :deploy_user, 'ubuntu'
-set :repo_url, 'git@github.com:seanpae/DempApp.git'
+set :repo_url, 'git@github.com:seanpae/DemoApp.git'
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
@@ -39,7 +39,7 @@ set :log_level, :debug
 set :linked_files, fetch(:linked_files, []).push('config/database.yml','config/application.yml','public/flowplayer-3.2.1.swf','public/flowplayer.controls-3.2.0.swf', 'public/favicon.ico')
 
 # Default value for linked_dirs is []
-set :linked_dirs, fetch(:linked_dirs, []).push('bin', 'log', 'tmp/pids', 'tmp/cache','db/sphinx', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/dewplayer')
+set :linked_dirs, fetch(:linked_dirs, []).push('bin', 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/dewplayer')
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
