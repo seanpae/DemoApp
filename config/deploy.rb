@@ -12,7 +12,9 @@ set :repo_url, 'git@github.com:seanpae/DempApp.git'
 set :deploy_to, "/home/#{fetch(:deploy_user)}/apps/#{fetch(:application)}"
 set :migrate_target,  :current
 set :rails_env, "production"
-set :rvm1_ruby_version, "2.0.0"
+set :rvm1_ruby_version, "2.3.1"
+
+
 set :pty, true 
 set :ssh_options, {
   forward_agent: true,
