@@ -19,7 +19,7 @@ set :pty, true
 set :ssh_options, {
   forward_agent: true,
   auth_methods: %w(publickey),
-  keys: %w(/home/anuj/Downloads/DemoApp.pem)
+  keys: %w("~/.ssh/DemoApp.pem")
 }
 
 # Default value for :scm is :git
@@ -36,10 +36,10 @@ set :log_level, :debug
 # set :pty, true
 
 # Default value for :linked_files is []
-set :linked_files, fetch(:linked_files, []).push('config/database.yml','config/application.yml','public/flowplayer-3.2.1.swf','public/flowplayer.controls-3.2.0.swf', 'public/favicon.ico')
+set :linked_files, fetch(:linked_files, []).push('config/database.yml')
 
 # Default value for linked_dirs is []
-set :linked_dirs, fetch(:linked_dirs, []).push('bin', 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/dewplayer')
+set :linked_dirs, fetch(:linked_dirs, []).push('bin', 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
@@ -71,16 +71,6 @@ namespace :deploy do
         end
       end
     end
-
-  desc "Updates Cron tab"
-  task :update_crontab do
-    on roles(:db) do
-      within "#{release_path}" do
-        execure :bundle , "exec whenever --update-crontab #{fetch(:application)}"
-      end
-    end
-  end
 end
 
 before "deploy:updated", "bundle:update"
-after "deploy:finished", "resque:restart"
