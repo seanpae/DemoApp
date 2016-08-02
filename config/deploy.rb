@@ -19,7 +19,7 @@ set :pty, true
 set :ssh_options, {
   forward_agent: true,
   auth_methods: %w(publickey),
-  keys: %w("~/.ssh/DemoApp.pem")
+  keys: %w(/home/anuj/Downloads/DemoApp.pem)
 }
 
 # Default value for :scm is :git
